@@ -21,7 +21,7 @@ app_license = "MIT"
 # include js, css files in header of web template
 # web_include_css = "/assets/sghrm/css/sghrm.css"
 # web_include_js = "/assets/sghrm/js/sghrm.js"
-
+fixtures = ['Custom Field', 'Property Setter',"Print Format"]
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
 
@@ -30,6 +30,10 @@ app_license = "MIT"
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
+doctype_js = {
+    "Employee":["custom_script/employee.js"],
+    "Salary Slip":["custom_script/salary_slip.js"]
+}
 
 # Home Pages
 # ----------
@@ -56,7 +60,7 @@ app_license = "MIT"
 
 # before_install = "sghrm.install.before_install"
 # after_install = "sghrm.install.after_install"
-
+after_install = "sghrm.sghrm.custom_script.install.after_install"
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
