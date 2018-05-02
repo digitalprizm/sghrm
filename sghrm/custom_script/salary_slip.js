@@ -26,7 +26,7 @@ for(var i = 0 ; i < cur_frm.doc.deductions.length ; i++){
         e_type_p = true
     }
 }
-
+console.log(e_type_p);
 if(e_type_p){
     for(var i = 0 ; i < cur_frm.doc.deductions.length ; i++){
         if(cur_frm.doc.deductions[i].salary_component=="EMPLOYEE CPF"){
@@ -35,7 +35,7 @@ if(e_type_p){
     }
 }
 else{
-    var row = frappe.model.add_child(cur_frm.doc, cur_frm.doc.deductions, "deductions");
+    var row = frappe.model.add_child(cur_frm.doc, "deductions");
     row.salary_component = "EMPLOYEE CPF";
     row.amount = Math.round(net_total*cur_frm.doc.employee_cpf/100);
 }
@@ -46,12 +46,13 @@ sub_total=cur_frm.doc.gross_pay - du_total;
 console.log(sub_total);
 var total_sal =0;
 for(var i = 0 ; i < cur_frm.doc.deductions.length ; i++){
-    if(cur_frm.doc.deductions[i].salary_component=="EMPLOYEE CPF"){
+    if(cur_frm.doc.deductions[i].salary_component == "EMPLOYEE CPF"){
                 total_sal=sub_total-cur_frm.doc.deductions[i].amount;
         }
         console.log(total_sal);
-        console.log("hey..");
+        console.log("hey.."); 
     }
 cur_frm.set_value("net_pay",total_sal);
-cur_frm.doc.employer_cpf_amount= Math.round(sub_total*cur_frm.doc.employer_cpf/100);
+cur_frm.doc.employer_cpf_amount = Math.round(sub_total*cur_frm.doc.employer_cpf/100);
+console.log(cur_frm.doc.employer_cpf_amount );
 });
